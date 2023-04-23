@@ -366,6 +366,88 @@ namespace Monitor
         private OpenFileDialog openFileDialog_Local;
         private CheckBox checkBox_Openall;
         private Button button_ScriptRunFromFile;
+        private TabPage tabPage_MOXA_GUI;
+        private GroupBox groupBox_V_Amp;
+        private GroupBox groupBox_V_Tempretures;
+        private TextBox textBox_V_calc;
+        private Label label_V_calc;
+        private Label label_V_Read;
+        private TextBox textBox_V_Read_Bp;
+        private Label label_V_PS;
+        private ComboBox comboBox_V_PA_Routed;
+        private Label label_V_Amp;
+        private Label label_V_PA_Routed;
+        private Label label_V_bp;
+        private Label label_V_AmpBP;
+        private TextBox textBox_V_Amp_bp;
+        private Label label_V_mv;
+        private Label label_V_c;
+        private TextBox textBox_V_Current;
+        private TextBox textBox_V_Rev_Power;
+        private TextBox textBox_V_Fwd_Power;
+        private TextBox textBox_V_PS_voltage;
+        private Label label_V_Current;
+        private Label label_V_calc_bottom;
+        private Label label_Read_V_bottom;
+        private TextBox textBox_V_V_Calc;
+        private TextBox textBox_V_A_Calc;
+        private Label label_V_PS_Voltage;
+        private Label label_V_Fwd_Power;
+        private Label label_V_Rev_Power;
+        private Label label_V_Abottom;
+        private Label label_V_vBottom4;
+        private Label label_V_vBottom3;
+        private Label label_V_vBottom2;
+        private Label label_V_vBottom1;
+        private Label label_V_mv_bottom;
+        private GroupBox groupBox31;
+        private Label label_H_Fan_indicator;
+        private Label label_H_Abottom;
+        private Label label_H_vBottom4;
+        private Label label_H_vBottom3;
+        private Label label_H_vBottom2;
+        private Label label_H_vBottom1;
+        private Label label_H_mv_bottom;
+        private Label label_H_Rev_Power;
+        private Label label_H_Fwd_Power;
+        private Label label_H_PS_Voltage;
+        private Label label_H_Current;
+        private Label label27;
+        private Label label_Read_H_bottom;
+        private TextBox textBox_H_V_Calc;
+        private TextBox textBox_H_A_Calc;
+        private TextBox textBox_H_Rev_Power;
+        private TextBox textBox_H_Fwd_Power;
+        private TextBox textBox_H_PS_voltage;
+        private TextBox textBox_H_Current;
+        private GroupBox groupBox_H_Tempretures;
+        private Label label_H_c;
+        private Label label_H_mv;
+        private Label label_H_bp;
+        private Label label_H_AmpBP;
+        private TextBox textBox_H_Amp_bp;
+        private TextBox textBox_H_calc;
+        private Label label_H_calc;
+        private Label label_H_Read;
+        private TextBox textBox_H_Read_Bp;
+        private Label label_H_PS;
+        private ComboBox comboBox_H_PA_Routed;
+        private Label label_H_Amp;
+        private Label label_H_PA_Routed;
+        private Label label_V_Fan_indicator;
+        private CheckBox checkBox_ReadContinuously;
+        private Button button_Default;
+        private Button button_Close;
+        private Label label_mSec;
+        private TextBox textBox_mSec;
+        private Button button_Save_exel;
+        private Label label_comm;
+        private Button button_Reset_comm;
+        private Button button_info;
+        private Label label_Mid_Chamber;
+        private TextBox textBox_Mid_Chamber;
+        private CheckBox checkBox_On_Off;
+        private CheckBox checkBox_Enable_Disable;
         private static readonly string PREAMBLE = "23";
 
 
@@ -555,6 +637,87 @@ namespace Monitor
             this.checkBox_RecordMiniAda = new System.Windows.Forms.CheckBox();
             this.checkBox_PauseMiniAda = new System.Windows.Forms.CheckBox();
             this.button_ClearMiniAda = new System.Windows.Forms.Button();
+            this.tabPage_MOXA_GUI = new System.Windows.Forms.TabPage();
+            this.button_Save_exel = new System.Windows.Forms.Button();
+            this.label_comm = new System.Windows.Forms.Label();
+            this.button_Reset_comm = new System.Windows.Forms.Button();
+            this.button_info = new System.Windows.Forms.Button();
+            this.button_Close = new System.Windows.Forms.Button();
+            this.label_mSec = new System.Windows.Forms.Label();
+            this.textBox_mSec = new System.Windows.Forms.TextBox();
+            this.checkBox_ReadContinuously = new System.Windows.Forms.CheckBox();
+            this.button_Default = new System.Windows.Forms.Button();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.label_H_Fan_indicator = new System.Windows.Forms.Label();
+            this.label_H_Abottom = new System.Windows.Forms.Label();
+            this.label_H_vBottom4 = new System.Windows.Forms.Label();
+            this.label_H_vBottom3 = new System.Windows.Forms.Label();
+            this.label_H_vBottom2 = new System.Windows.Forms.Label();
+            this.label_H_vBottom1 = new System.Windows.Forms.Label();
+            this.label_H_mv_bottom = new System.Windows.Forms.Label();
+            this.label_H_Rev_Power = new System.Windows.Forms.Label();
+            this.label_H_Fwd_Power = new System.Windows.Forms.Label();
+            this.label_H_PS_Voltage = new System.Windows.Forms.Label();
+            this.label_H_Current = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label_Read_H_bottom = new System.Windows.Forms.Label();
+            this.textBox_H_V_Calc = new System.Windows.Forms.TextBox();
+            this.textBox_H_A_Calc = new System.Windows.Forms.TextBox();
+            this.textBox_H_Rev_Power = new System.Windows.Forms.TextBox();
+            this.textBox_H_Fwd_Power = new System.Windows.Forms.TextBox();
+            this.textBox_H_PS_voltage = new System.Windows.Forms.TextBox();
+            this.textBox_H_Current = new System.Windows.Forms.TextBox();
+            this.groupBox_H_Tempretures = new System.Windows.Forms.GroupBox();
+            this.label_Mid_Chamber = new System.Windows.Forms.Label();
+            this.textBox_Mid_Chamber = new System.Windows.Forms.TextBox();
+            this.label_H_c = new System.Windows.Forms.Label();
+            this.label_H_mv = new System.Windows.Forms.Label();
+            this.label_H_bp = new System.Windows.Forms.Label();
+            this.label_H_AmpBP = new System.Windows.Forms.Label();
+            this.textBox_H_Amp_bp = new System.Windows.Forms.TextBox();
+            this.textBox_H_calc = new System.Windows.Forms.TextBox();
+            this.label_H_calc = new System.Windows.Forms.Label();
+            this.label_H_Read = new System.Windows.Forms.Label();
+            this.textBox_H_Read_Bp = new System.Windows.Forms.TextBox();
+            this.label_H_PS = new System.Windows.Forms.Label();
+            this.comboBox_H_PA_Routed = new System.Windows.Forms.ComboBox();
+            this.label_H_Amp = new System.Windows.Forms.Label();
+            this.label_H_PA_Routed = new System.Windows.Forms.Label();
+            this.groupBox_V_Amp = new System.Windows.Forms.GroupBox();
+            this.checkBox_On_Off = new System.Windows.Forms.CheckBox();
+            this.label_V_Fan_indicator = new System.Windows.Forms.Label();
+            this.label_V_Abottom = new System.Windows.Forms.Label();
+            this.label_V_vBottom4 = new System.Windows.Forms.Label();
+            this.label_V_vBottom3 = new System.Windows.Forms.Label();
+            this.label_V_vBottom2 = new System.Windows.Forms.Label();
+            this.label_V_vBottom1 = new System.Windows.Forms.Label();
+            this.label_V_mv_bottom = new System.Windows.Forms.Label();
+            this.label_V_Rev_Power = new System.Windows.Forms.Label();
+            this.label_V_Fwd_Power = new System.Windows.Forms.Label();
+            this.label_V_PS_Voltage = new System.Windows.Forms.Label();
+            this.label_V_Current = new System.Windows.Forms.Label();
+            this.label_V_calc_bottom = new System.Windows.Forms.Label();
+            this.label_Read_V_bottom = new System.Windows.Forms.Label();
+            this.textBox_V_V_Calc = new System.Windows.Forms.TextBox();
+            this.textBox_V_A_Calc = new System.Windows.Forms.TextBox();
+            this.textBox_V_Rev_Power = new System.Windows.Forms.TextBox();
+            this.textBox_V_Fwd_Power = new System.Windows.Forms.TextBox();
+            this.textBox_V_PS_voltage = new System.Windows.Forms.TextBox();
+            this.textBox_V_Current = new System.Windows.Forms.TextBox();
+            this.groupBox_V_Tempretures = new System.Windows.Forms.GroupBox();
+            this.label_V_c = new System.Windows.Forms.Label();
+            this.label_V_mv = new System.Windows.Forms.Label();
+            this.label_V_bp = new System.Windows.Forms.Label();
+            this.label_V_AmpBP = new System.Windows.Forms.Label();
+            this.textBox_V_Amp_bp = new System.Windows.Forms.TextBox();
+            this.textBox_V_calc = new System.Windows.Forms.TextBox();
+            this.label_V_calc = new System.Windows.Forms.Label();
+            this.label_V_Read = new System.Windows.Forms.Label();
+            this.textBox_V_Read_Bp = new System.Windows.Forms.TextBox();
+            this.label_V_PS = new System.Windows.Forms.Label();
+            this.comboBox_V_PA_Routed = new System.Windows.Forms.ComboBox();
+            this.label_V_Amp = new System.Windows.Forms.Label();
+            this.label_V_PA_Routed = new System.Windows.Forms.Label();
             this.button_OpenFolder = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.S1_Configuration = new System.Windows.Forms.GroupBox();
@@ -741,6 +904,7 @@ namespace Monitor
             this.saveFileDialog_Local = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog_Local = new System.Windows.Forms.OpenFileDialog();
             this.checkBox_Openall = new System.Windows.Forms.CheckBox();
+            this.checkBox_Enable_Disable = new System.Windows.Forms.CheckBox();
             this.groupBox_ServerSettings.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl_Main.SuspendLayout();
@@ -764,6 +928,11 @@ namespace Monitor
             this.groupBox_CLISendCommand.SuspendLayout();
             this.tabPage2_Script.SuspendLayout();
             this.groupBox32.SuspendLayout();
+            this.tabPage_MOXA_GUI.SuspendLayout();
+            this.groupBox31.SuspendLayout();
+            this.groupBox_H_Tempretures.SuspendLayout();
+            this.groupBox_V_Amp.SuspendLayout();
+            this.groupBox_V_Tempretures.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.S1_Configuration.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -937,6 +1106,7 @@ namespace Monitor
             this.tabControl_Main.Controls.Add(this.tabPage_charts);
             this.tabControl_Main.Controls.Add(this.tabPage_SerialPort);
             this.tabControl_Main.Controls.Add(this.tabPage_Commands);
+            this.tabControl_Main.Controls.Add(this.tabPage_MOXA_GUI);
             this.tabControl_Main.Location = new System.Drawing.Point(4, 5);
             this.tabControl_Main.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl_Main.Name = "tabControl_Main";
@@ -2017,7 +2187,7 @@ namespace Monitor
             this.tabPage_Commands.Name = "tabPage_Commands";
             this.tabPage_Commands.Size = new System.Drawing.Size(1414, 648);
             this.tabPage_Commands.TabIndex = 11;
-            this.tabPage_Commands.Text = "3036 - mIFRS CLI";
+            this.tabPage_Commands.Text = "MOXA CLI";
             this.tabPage_Commands.UseVisualStyleBackColor = true;
             // 
             // groupBox40
@@ -2030,7 +2200,7 @@ namespace Monitor
             this.groupBox40.Size = new System.Drawing.Size(886, 642);
             this.groupBox40.TabIndex = 11;
             this.groupBox40.TabStop = false;
-            this.groupBox40.Text = "3036 - mIFRS CLI";
+            this.groupBox40.Text = "MOXA CLI";
             // 
             // tabControl_System
             // 
@@ -2405,6 +2575,887 @@ namespace Monitor
             this.button_ClearMiniAda.TabIndex = 6;
             this.button_ClearMiniAda.Text = "Clear";
             this.button_ClearMiniAda.UseVisualStyleBackColor = true;
+            // 
+            // tabPage_MOXA_GUI
+            // 
+            this.tabPage_MOXA_GUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage_MOXA_GUI.Controls.Add(this.button_Save_exel);
+            this.tabPage_MOXA_GUI.Controls.Add(this.label_comm);
+            this.tabPage_MOXA_GUI.Controls.Add(this.button_Reset_comm);
+            this.tabPage_MOXA_GUI.Controls.Add(this.button_info);
+            this.tabPage_MOXA_GUI.Controls.Add(this.button_Close);
+            this.tabPage_MOXA_GUI.Controls.Add(this.label_mSec);
+            this.tabPage_MOXA_GUI.Controls.Add(this.textBox_mSec);
+            this.tabPage_MOXA_GUI.Controls.Add(this.checkBox_ReadContinuously);
+            this.tabPage_MOXA_GUI.Controls.Add(this.button_Default);
+            this.tabPage_MOXA_GUI.Controls.Add(this.groupBox31);
+            this.tabPage_MOXA_GUI.Controls.Add(this.groupBox_V_Amp);
+            this.tabPage_MOXA_GUI.Location = new System.Drawing.Point(4, 27);
+            this.tabPage_MOXA_GUI.Name = "tabPage_MOXA_GUI";
+            this.tabPage_MOXA_GUI.Size = new System.Drawing.Size(1414, 648);
+            this.tabPage_MOXA_GUI.TabIndex = 12;
+            this.tabPage_MOXA_GUI.Text = "MOXA GUI";
+            this.tabPage_MOXA_GUI.UseVisualStyleBackColor = true;
+            // 
+            // button_Save_exel
+            // 
+            this.button_Save_exel.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Save_exel.Location = new System.Drawing.Point(1238, 598);
+            this.button_Save_exel.Name = "button_Save_exel";
+            this.button_Save_exel.Size = new System.Drawing.Size(155, 44);
+            this.button_Save_exel.TabIndex = 32;
+            this.button_Save_exel.Text = "Save Excel";
+            this.button_Save_exel.UseVisualStyleBackColor = true;
+            // 
+            // label_comm
+            // 
+            this.label_comm.AutoSize = true;
+            this.label_comm.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_comm.Location = new System.Drawing.Point(940, 571);
+            this.label_comm.Name = "label_comm";
+            this.label_comm.Size = new System.Drawing.Size(65, 23);
+            this.label_comm.TabIndex = 31;
+            this.label_comm.Text = "Comm.";
+            // 
+            // button_Reset_comm
+            // 
+            this.button_Reset_comm.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Reset_comm.Location = new System.Drawing.Point(1038, 598);
+            this.button_Reset_comm.Name = "button_Reset_comm";
+            this.button_Reset_comm.Size = new System.Drawing.Size(155, 44);
+            this.button_Reset_comm.TabIndex = 30;
+            this.button_Reset_comm.Text = "Reset Comm.";
+            this.button_Reset_comm.UseVisualStyleBackColor = true;
+            // 
+            // button_info
+            // 
+            this.button_info.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_info.Location = new System.Drawing.Point(16, 598);
+            this.button_info.Name = "button_info";
+            this.button_info.Size = new System.Drawing.Size(159, 44);
+            this.button_info.TabIndex = 29;
+            this.button_info.Text = "Info";
+            this.button_info.UseVisualStyleBackColor = true;
+            // 
+            // button_Close
+            // 
+            this.button_Close.BackColor = System.Drawing.Color.IndianRed;
+            this.button_Close.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Close.Location = new System.Drawing.Point(532, 599);
+            this.button_Close.Name = "button_Close";
+            this.button_Close.Size = new System.Drawing.Size(154, 44);
+            this.button_Close.TabIndex = 28;
+            this.button_Close.Text = "Close";
+            this.button_Close.UseVisualStyleBackColor = false;
+            // 
+            // label_mSec
+            // 
+            this.label_mSec.AutoSize = true;
+            this.label_mSec.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_mSec.Location = new System.Drawing.Point(481, 571);
+            this.label_mSec.Name = "label_mSec";
+            this.label_mSec.Size = new System.Drawing.Size(52, 23);
+            this.label_mSec.TabIndex = 24;
+            this.label_mSec.Text = "mSec";
+            // 
+            // textBox_mSec
+            // 
+            this.textBox_mSec.Location = new System.Drawing.Point(378, 566);
+            this.textBox_mSec.Name = "textBox_mSec";
+            this.textBox_mSec.Size = new System.Drawing.Size(100, 26);
+            this.textBox_mSec.TabIndex = 27;
+            // 
+            // checkBox_ReadContinuously
+            // 
+            this.checkBox_ReadContinuously.AutoSize = true;
+            this.checkBox_ReadContinuously.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_ReadContinuously.Location = new System.Drawing.Point(181, 571);
+            this.checkBox_ReadContinuously.Name = "checkBox_ReadContinuously";
+            this.checkBox_ReadContinuously.Size = new System.Drawing.Size(197, 23);
+            this.checkBox_ReadContinuously.TabIndex = 26;
+            this.checkBox_ReadContinuously.Text = "Read Continuously every\r\n";
+            this.checkBox_ReadContinuously.UseVisualStyleBackColor = true;
+            // 
+            // button_Default
+            // 
+            this.button_Default.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Default.Location = new System.Drawing.Point(728, 598);
+            this.button_Default.Name = "button_Default";
+            this.button_Default.Size = new System.Drawing.Size(156, 44);
+            this.button_Default.TabIndex = 25;
+            this.button_Default.Text = "Set Default";
+            this.button_Default.UseVisualStyleBackColor = true;
+            // 
+            // groupBox31
+            // 
+            this.groupBox31.Controls.Add(this.label_H_Fan_indicator);
+            this.groupBox31.Controls.Add(this.label_H_Abottom);
+            this.groupBox31.Controls.Add(this.label_H_vBottom4);
+            this.groupBox31.Controls.Add(this.label_H_vBottom3);
+            this.groupBox31.Controls.Add(this.label_H_vBottom2);
+            this.groupBox31.Controls.Add(this.label_H_vBottom1);
+            this.groupBox31.Controls.Add(this.label_H_mv_bottom);
+            this.groupBox31.Controls.Add(this.label_H_Rev_Power);
+            this.groupBox31.Controls.Add(this.label_H_Fwd_Power);
+            this.groupBox31.Controls.Add(this.label_H_PS_Voltage);
+            this.groupBox31.Controls.Add(this.label_H_Current);
+            this.groupBox31.Controls.Add(this.label27);
+            this.groupBox31.Controls.Add(this.label_Read_H_bottom);
+            this.groupBox31.Controls.Add(this.textBox_H_V_Calc);
+            this.groupBox31.Controls.Add(this.textBox_H_A_Calc);
+            this.groupBox31.Controls.Add(this.textBox_H_Rev_Power);
+            this.groupBox31.Controls.Add(this.textBox_H_Fwd_Power);
+            this.groupBox31.Controls.Add(this.textBox_H_PS_voltage);
+            this.groupBox31.Controls.Add(this.textBox_H_Current);
+            this.groupBox31.Controls.Add(this.groupBox_H_Tempretures);
+            this.groupBox31.Controls.Add(this.label_H_PS);
+            this.groupBox31.Controls.Add(this.comboBox_H_PA_Routed);
+            this.groupBox31.Controls.Add(this.label_H_Amp);
+            this.groupBox31.Controls.Add(this.label_H_PA_Routed);
+            this.groupBox31.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox31.Location = new System.Drawing.Point(728, 9);
+            this.groupBox31.Name = "groupBox31";
+            this.groupBox31.Size = new System.Drawing.Size(665, 551);
+            this.groupBox31.TabIndex = 24;
+            this.groupBox31.TabStop = false;
+            this.groupBox31.Text = "Amp. H";
+            // 
+            // label_H_Fan_indicator
+            // 
+            this.label_H_Fan_indicator.AutoSize = true;
+            this.label_H_Fan_indicator.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Fan_indicator.Location = new System.Drawing.Point(22, 508);
+            this.label_H_Fan_indicator.Name = "label_H_Fan_indicator";
+            this.label_H_Fan_indicator.Size = new System.Drawing.Size(112, 23);
+            this.label_H_Fan_indicator.TabIndex = 23;
+            this.label_H_Fan_indicator.Text = "Fan Indicator";
+            // 
+            // label_H_Abottom
+            // 
+            this.label_H_Abottom.AutoSize = true;
+            this.label_H_Abottom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Abottom.Location = new System.Drawing.Point(581, 351);
+            this.label_H_Abottom.Name = "label_H_Abottom";
+            this.label_H_Abottom.Size = new System.Drawing.Size(22, 23);
+            this.label_H_Abottom.TabIndex = 22;
+            this.label_H_Abottom.Text = "A";
+            // 
+            // label_H_vBottom4
+            // 
+            this.label_H_vBottom4.AutoSize = true;
+            this.label_H_vBottom4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_vBottom4.Location = new System.Drawing.Point(582, 389);
+            this.label_H_vBottom4.Name = "label_H_vBottom4";
+            this.label_H_vBottom4.Size = new System.Drawing.Size(21, 23);
+            this.label_H_vBottom4.TabIndex = 21;
+            this.label_H_vBottom4.Text = "V";
+            // 
+            // label_H_vBottom3
+            // 
+            this.label_H_vBottom3.AutoSize = true;
+            this.label_H_vBottom3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_vBottom3.Location = new System.Drawing.Point(375, 473);
+            this.label_H_vBottom3.Name = "label_H_vBottom3";
+            this.label_H_vBottom3.Size = new System.Drawing.Size(21, 23);
+            this.label_H_vBottom3.TabIndex = 20;
+            this.label_H_vBottom3.Text = "V";
+            // 
+            // label_H_vBottom2
+            // 
+            this.label_H_vBottom2.AutoSize = true;
+            this.label_H_vBottom2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_vBottom2.Location = new System.Drawing.Point(375, 434);
+            this.label_H_vBottom2.Name = "label_H_vBottom2";
+            this.label_H_vBottom2.Size = new System.Drawing.Size(21, 23);
+            this.label_H_vBottom2.TabIndex = 19;
+            this.label_H_vBottom2.Text = "V";
+            // 
+            // label_H_vBottom1
+            // 
+            this.label_H_vBottom1.AutoSize = true;
+            this.label_H_vBottom1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_vBottom1.Location = new System.Drawing.Point(375, 395);
+            this.label_H_vBottom1.Name = "label_H_vBottom1";
+            this.label_H_vBottom1.Size = new System.Drawing.Size(21, 23);
+            this.label_H_vBottom1.TabIndex = 18;
+            this.label_H_vBottom1.Text = "V";
+            // 
+            // label_H_mv_bottom
+            // 
+            this.label_H_mv_bottom.AutoSize = true;
+            this.label_H_mv_bottom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_mv_bottom.Location = new System.Drawing.Point(375, 356);
+            this.label_H_mv_bottom.Name = "label_H_mv_bottom";
+            this.label_H_mv_bottom.Size = new System.Drawing.Size(36, 23);
+            this.label_H_mv_bottom.TabIndex = 9;
+            this.label_H_mv_bottom.Text = "mV";
+            // 
+            // label_H_Rev_Power
+            // 
+            this.label_H_Rev_Power.AutoSize = true;
+            this.label_H_Rev_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Rev_Power.Location = new System.Drawing.Point(113, 469);
+            this.label_H_Rev_Power.Name = "label_H_Rev_Power";
+            this.label_H_Rev_Power.Size = new System.Drawing.Size(99, 23);
+            this.label_H_Rev_Power.TabIndex = 17;
+            this.label_H_Rev_Power.Text = "Rev. Power";
+            // 
+            // label_H_Fwd_Power
+            // 
+            this.label_H_Fwd_Power.AutoSize = true;
+            this.label_H_Fwd_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Fwd_Power.Location = new System.Drawing.Point(112, 429);
+            this.label_H_Fwd_Power.Name = "label_H_Fwd_Power";
+            this.label_H_Fwd_Power.Size = new System.Drawing.Size(103, 23);
+            this.label_H_Fwd_Power.TabIndex = 16;
+            this.label_H_Fwd_Power.Text = "Fwd. Power";
+            // 
+            // label_H_PS_Voltage
+            // 
+            this.label_H_PS_Voltage.AutoSize = true;
+            this.label_H_PS_Voltage.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_PS_Voltage.Location = new System.Drawing.Point(110, 387);
+            this.label_H_PS_Voltage.Name = "label_H_PS_Voltage";
+            this.label_H_PS_Voltage.Size = new System.Drawing.Size(93, 23);
+            this.label_H_PS_Voltage.TabIndex = 15;
+            this.label_H_PS_Voltage.Text = "PS Voltage";
+            // 
+            // label_H_Current
+            // 
+            this.label_H_Current.AutoSize = true;
+            this.label_H_Current.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Current.Location = new System.Drawing.Point(112, 350);
+            this.label_H_Current.Name = "label_H_Current";
+            this.label_H_Current.Size = new System.Drawing.Size(71, 23);
+            this.label_H_Current.TabIndex = 9;
+            this.label_H_Current.Text = "Current";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(470, 303);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(102, 26);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "Calculated";
+            // 
+            // label_Read_H_bottom
+            // 
+            this.label_Read_H_bottom.AutoSize = true;
+            this.label_Read_H_bottom.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Read_H_bottom.Location = new System.Drawing.Point(276, 304);
+            this.label_Read_H_bottom.Name = "label_Read_H_bottom";
+            this.label_Read_H_bottom.Size = new System.Drawing.Size(56, 26);
+            this.label_Read_H_bottom.TabIndex = 9;
+            this.label_Read_H_bottom.Text = "Read";
+            // 
+            // textBox_H_V_Calc
+            // 
+            this.textBox_H_V_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_V_Calc.Location = new System.Drawing.Point(451, 375);
+            this.textBox_H_V_Calc.Multiline = true;
+            this.textBox_H_V_Calc.Name = "textBox_H_V_Calc";
+            this.textBox_H_V_Calc.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_V_Calc.TabIndex = 14;
+            // 
+            // textBox_H_A_Calc
+            // 
+            this.textBox_H_A_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_A_Calc.Location = new System.Drawing.Point(451, 336);
+            this.textBox_H_A_Calc.Multiline = true;
+            this.textBox_H_A_Calc.Name = "textBox_H_A_Calc";
+            this.textBox_H_A_Calc.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_A_Calc.TabIndex = 13;
+            // 
+            // textBox_H_Rev_Power
+            // 
+            this.textBox_H_Rev_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Rev_Power.Location = new System.Drawing.Point(244, 455);
+            this.textBox_H_Rev_Power.Multiline = true;
+            this.textBox_H_Rev_Power.Name = "textBox_H_Rev_Power";
+            this.textBox_H_Rev_Power.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_Rev_Power.TabIndex = 12;
+            // 
+            // textBox_H_Fwd_Power
+            // 
+            this.textBox_H_Fwd_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Fwd_Power.Location = new System.Drawing.Point(244, 415);
+            this.textBox_H_Fwd_Power.Multiline = true;
+            this.textBox_H_Fwd_Power.Name = "textBox_H_Fwd_Power";
+            this.textBox_H_Fwd_Power.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_Fwd_Power.TabIndex = 11;
+            // 
+            // textBox_H_PS_voltage
+            // 
+            this.textBox_H_PS_voltage.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_PS_voltage.Location = new System.Drawing.Point(244, 375);
+            this.textBox_H_PS_voltage.Multiline = true;
+            this.textBox_H_PS_voltage.Name = "textBox_H_PS_voltage";
+            this.textBox_H_PS_voltage.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_PS_voltage.TabIndex = 10;
+            // 
+            // textBox_H_Current
+            // 
+            this.textBox_H_Current.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Current.Location = new System.Drawing.Point(244, 336);
+            this.textBox_H_Current.Multiline = true;
+            this.textBox_H_Current.Name = "textBox_H_Current";
+            this.textBox_H_Current.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_Current.TabIndex = 9;
+            // 
+            // groupBox_H_Tempretures
+            // 
+            this.groupBox_H_Tempretures.Controls.Add(this.label_Mid_Chamber);
+            this.groupBox_H_Tempretures.Controls.Add(this.textBox_Mid_Chamber);
+            this.groupBox_H_Tempretures.Controls.Add(this.label_H_c);
+            this.groupBox_H_Tempretures.Controls.Add(this.label_H_mv);
+            this.groupBox_H_Tempretures.Controls.Add(this.label_H_bp);
+            this.groupBox_H_Tempretures.Controls.Add(this.label_H_AmpBP);
+            this.groupBox_H_Tempretures.Controls.Add(this.textBox_H_Amp_bp);
+            this.groupBox_H_Tempretures.Controls.Add(this.textBox_H_calc);
+            this.groupBox_H_Tempretures.Controls.Add(this.label_H_calc);
+            this.groupBox_H_Tempretures.Controls.Add(this.label_H_Read);
+            this.groupBox_H_Tempretures.Controls.Add(this.textBox_H_Read_Bp);
+            this.groupBox_H_Tempretures.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_H_Tempretures.Location = new System.Drawing.Point(26, 109);
+            this.groupBox_H_Tempretures.Name = "groupBox_H_Tempretures";
+            this.groupBox_H_Tempretures.Size = new System.Drawing.Size(613, 188);
+            this.groupBox_H_Tempretures.TabIndex = 5;
+            this.groupBox_H_Tempretures.TabStop = false;
+            this.groupBox_H_Tempretures.Text = "Temperatures";
+            // 
+            // label_Mid_Chamber
+            // 
+            this.label_Mid_Chamber.AutoSize = true;
+            this.label_Mid_Chamber.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Mid_Chamber.Location = new System.Drawing.Point(10, 106);
+            this.label_Mid_Chamber.Name = "label_Mid_Chamber";
+            this.label_Mid_Chamber.Size = new System.Drawing.Size(129, 26);
+            this.label_Mid_Chamber.TabIndex = 10;
+            this.label_Mid_Chamber.Text = "Mid Chamber";
+            // 
+            // textBox_Mid_Chamber
+            // 
+            this.textBox_Mid_Chamber.BackColor = System.Drawing.Color.Lime;
+            this.textBox_Mid_Chamber.Location = new System.Drawing.Point(10, 139);
+            this.textBox_Mid_Chamber.Multiline = true;
+            this.textBox_Mid_Chamber.Name = "textBox_Mid_Chamber";
+            this.textBox_Mid_Chamber.Size = new System.Drawing.Size(125, 37);
+            this.textBox_Mid_Chamber.TabIndex = 9;
+            // 
+            // label_H_c
+            // 
+            this.label_H_c.AutoSize = true;
+            this.label_H_c.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_c.Location = new System.Drawing.Point(563, 67);
+            this.label_H_c.Name = "label_H_c";
+            this.label_H_c.Size = new System.Drawing.Size(27, 23);
+            this.label_H_c.TabIndex = 8;
+            this.label_H_c.Text = "°C";
+            // 
+            // label_H_mv
+            // 
+            this.label_H_mv.AutoSize = true;
+            this.label_H_mv.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_mv.Location = new System.Drawing.Point(357, 67);
+            this.label_H_mv.Name = "label_H_mv";
+            this.label_H_mv.Size = new System.Drawing.Size(36, 23);
+            this.label_H_mv.TabIndex = 7;
+            this.label_H_mv.Text = "mV";
+            // 
+            // label_H_bp
+            // 
+            this.label_H_bp.AutoSize = true;
+            this.label_H_bp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_bp.Location = new System.Drawing.Point(143, 66);
+            this.label_H_bp.Name = "label_H_bp";
+            this.label_H_bp.Size = new System.Drawing.Size(73, 23);
+            this.label_H_bp.TabIndex = 6;
+            this.label_H_bp.Text = "Amp.BP";
+            // 
+            // label_H_AmpBP
+            // 
+            this.label_H_AmpBP.AutoSize = true;
+            this.label_H_AmpBP.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_AmpBP.Location = new System.Drawing.Point(453, 106);
+            this.label_H_AmpBP.Name = "label_H_AmpBP";
+            this.label_H_AmpBP.Size = new System.Drawing.Size(82, 26);
+            this.label_H_AmpBP.TabIndex = 5;
+            this.label_H_AmpBP.Text = "Amp.BP";
+            // 
+            // textBox_H_Amp_bp
+            // 
+            this.textBox_H_Amp_bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Amp_bp.Location = new System.Drawing.Point(430, 139);
+            this.textBox_H_Amp_bp.Multiline = true;
+            this.textBox_H_Amp_bp.Name = "textBox_H_Amp_bp";
+            this.textBox_H_Amp_bp.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_Amp_bp.TabIndex = 4;
+            // 
+            // textBox_H_calc
+            // 
+            this.textBox_H_calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_calc.Location = new System.Drawing.Point(430, 54);
+            this.textBox_H_calc.Multiline = true;
+            this.textBox_H_calc.Name = "textBox_H_calc";
+            this.textBox_H_calc.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_calc.TabIndex = 3;
+            // 
+            // label_H_calc
+            // 
+            this.label_H_calc.AutoSize = true;
+            this.label_H_calc.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_calc.Location = new System.Drawing.Point(444, 23);
+            this.label_H_calc.Name = "label_H_calc";
+            this.label_H_calc.Size = new System.Drawing.Size(102, 26);
+            this.label_H_calc.TabIndex = 2;
+            this.label_H_calc.Text = "Calculated";
+            // 
+            // label_H_Read
+            // 
+            this.label_H_Read.AutoSize = true;
+            this.label_H_Read.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Read.Location = new System.Drawing.Point(262, 20);
+            this.label_H_Read.Name = "label_H_Read";
+            this.label_H_Read.Size = new System.Drawing.Size(56, 26);
+            this.label_H_Read.TabIndex = 1;
+            this.label_H_Read.Text = "Read";
+            // 
+            // textBox_H_Read_Bp
+            // 
+            this.textBox_H_Read_Bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Read_Bp.Location = new System.Drawing.Point(226, 54);
+            this.textBox_H_Read_Bp.Multiline = true;
+            this.textBox_H_Read_Bp.Name = "textBox_H_Read_Bp";
+            this.textBox_H_Read_Bp.Size = new System.Drawing.Size(125, 37);
+            this.textBox_H_Read_Bp.TabIndex = 0;
+            // 
+            // label_H_PS
+            // 
+            this.label_H_PS.AutoSize = true;
+            this.label_H_PS.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_PS.Location = new System.Drawing.Point(167, 27);
+            this.label_H_PS.Name = "label_H_PS";
+            this.label_H_PS.Size = new System.Drawing.Size(33, 26);
+            this.label_H_PS.TabIndex = 1;
+            this.label_H_PS.Text = "PS";
+            // 
+            // comboBox_H_PA_Routed
+            // 
+            this.comboBox_H_PA_Routed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_H_PA_Routed.FormattingEnabled = true;
+            this.comboBox_H_PA_Routed.Items.AddRange(new object[] {
+            "High",
+            "Low",
+            "Iso"});
+            this.comboBox_H_PA_Routed.Location = new System.Drawing.Point(451, 67);
+            this.comboBox_H_PA_Routed.Name = "comboBox_H_PA_Routed";
+            this.comboBox_H_PA_Routed.Size = new System.Drawing.Size(139, 31);
+            this.comboBox_H_PA_Routed.TabIndex = 4;
+            // 
+            // label_H_Amp
+            // 
+            this.label_H_Amp.AutoSize = true;
+            this.label_H_Amp.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_Amp.Location = new System.Drawing.Point(259, 27);
+            this.label_H_Amp.Name = "label_H_Amp";
+            this.label_H_Amp.Size = new System.Drawing.Size(53, 26);
+            this.label_H_Amp.TabIndex = 2;
+            this.label_H_Amp.Text = "Amp";
+            // 
+            // label_H_PA_Routed
+            // 
+            this.label_H_PA_Routed.AutoSize = true;
+            this.label_H_PA_Routed.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_H_PA_Routed.Location = new System.Drawing.Point(446, 39);
+            this.label_H_PA_Routed.Name = "label_H_PA_Routed";
+            this.label_H_PA_Routed.Size = new System.Drawing.Size(147, 26);
+            this.label_H_PA_Routed.TabIndex = 3;
+            this.label_H_PA_Routed.Text = "PA Routed Gain";
+            // 
+            // groupBox_V_Amp
+            // 
+            this.groupBox_V_Amp.Controls.Add(this.checkBox_Enable_Disable);
+            this.groupBox_V_Amp.Controls.Add(this.checkBox_On_Off);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_Fan_indicator);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_Abottom);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_vBottom4);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_vBottom3);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_vBottom2);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_vBottom1);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_mv_bottom);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_Rev_Power);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_Fwd_Power);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_PS_Voltage);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_Current);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_calc_bottom);
+            this.groupBox_V_Amp.Controls.Add(this.label_Read_V_bottom);
+            this.groupBox_V_Amp.Controls.Add(this.textBox_V_V_Calc);
+            this.groupBox_V_Amp.Controls.Add(this.textBox_V_A_Calc);
+            this.groupBox_V_Amp.Controls.Add(this.textBox_V_Rev_Power);
+            this.groupBox_V_Amp.Controls.Add(this.textBox_V_Fwd_Power);
+            this.groupBox_V_Amp.Controls.Add(this.textBox_V_PS_voltage);
+            this.groupBox_V_Amp.Controls.Add(this.textBox_V_Current);
+            this.groupBox_V_Amp.Controls.Add(this.groupBox_V_Tempretures);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_PS);
+            this.groupBox_V_Amp.Controls.Add(this.comboBox_V_PA_Routed);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_Amp);
+            this.groupBox_V_Amp.Controls.Add(this.label_V_PA_Routed);
+            this.groupBox_V_Amp.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_V_Amp.Location = new System.Drawing.Point(21, 9);
+            this.groupBox_V_Amp.Name = "groupBox_V_Amp";
+            this.groupBox_V_Amp.Size = new System.Drawing.Size(665, 551);
+            this.groupBox_V_Amp.TabIndex = 1;
+            this.groupBox_V_Amp.TabStop = false;
+            this.groupBox_V_Amp.Text = "Amp. V";
+            // 
+            // checkBox_On_Off
+            // 
+            this.checkBox_On_Off.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_On_Off.AutoSize = true;
+            this.checkBox_On_Off.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_On_Off.ForeColor = System.Drawing.Color.Red;
+            this.checkBox_On_Off.Location = new System.Drawing.Point(147, 61);
+            this.checkBox_On_Off.Name = "checkBox_On_Off";
+            this.checkBox_On_Off.Size = new System.Drawing.Size(44, 29);
+            this.checkBox_On_Off.TabIndex = 24;
+            this.checkBox_On_Off.Text = "OFF";
+            this.checkBox_On_Off.UseVisualStyleBackColor = true;
+            this.checkBox_On_Off.CheckedChanged += new System.EventHandler(this.checkBox_On_Off_CheckedChanged);
+            // 
+            // label_V_Fan_indicator
+            // 
+            this.label_V_Fan_indicator.AutoSize = true;
+            this.label_V_Fan_indicator.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Fan_indicator.Location = new System.Drawing.Point(22, 508);
+            this.label_V_Fan_indicator.Name = "label_V_Fan_indicator";
+            this.label_V_Fan_indicator.Size = new System.Drawing.Size(112, 23);
+            this.label_V_Fan_indicator.TabIndex = 23;
+            this.label_V_Fan_indicator.Text = "Fan Indicator";
+            // 
+            // label_V_Abottom
+            // 
+            this.label_V_Abottom.AutoSize = true;
+            this.label_V_Abottom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Abottom.Location = new System.Drawing.Point(582, 351);
+            this.label_V_Abottom.Name = "label_V_Abottom";
+            this.label_V_Abottom.Size = new System.Drawing.Size(22, 23);
+            this.label_V_Abottom.TabIndex = 22;
+            this.label_V_Abottom.Text = "A";
+            // 
+            // label_V_vBottom4
+            // 
+            this.label_V_vBottom4.AutoSize = true;
+            this.label_V_vBottom4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_vBottom4.Location = new System.Drawing.Point(582, 390);
+            this.label_V_vBottom4.Name = "label_V_vBottom4";
+            this.label_V_vBottom4.Size = new System.Drawing.Size(21, 23);
+            this.label_V_vBottom4.TabIndex = 21;
+            this.label_V_vBottom4.Text = "V";
+            // 
+            // label_V_vBottom3
+            // 
+            this.label_V_vBottom3.AutoSize = true;
+            this.label_V_vBottom3.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_vBottom3.Location = new System.Drawing.Point(375, 473);
+            this.label_V_vBottom3.Name = "label_V_vBottom3";
+            this.label_V_vBottom3.Size = new System.Drawing.Size(21, 23);
+            this.label_V_vBottom3.TabIndex = 20;
+            this.label_V_vBottom3.Text = "V";
+            // 
+            // label_V_vBottom2
+            // 
+            this.label_V_vBottom2.AutoSize = true;
+            this.label_V_vBottom2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_vBottom2.Location = new System.Drawing.Point(375, 433);
+            this.label_V_vBottom2.Name = "label_V_vBottom2";
+            this.label_V_vBottom2.Size = new System.Drawing.Size(21, 23);
+            this.label_V_vBottom2.TabIndex = 19;
+            this.label_V_vBottom2.Text = "V";
+            // 
+            // label_V_vBottom1
+            // 
+            this.label_V_vBottom1.AutoSize = true;
+            this.label_V_vBottom1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_vBottom1.Location = new System.Drawing.Point(375, 395);
+            this.label_V_vBottom1.Name = "label_V_vBottom1";
+            this.label_V_vBottom1.Size = new System.Drawing.Size(21, 23);
+            this.label_V_vBottom1.TabIndex = 18;
+            this.label_V_vBottom1.Text = "V";
+            // 
+            // label_V_mv_bottom
+            // 
+            this.label_V_mv_bottom.AutoSize = true;
+            this.label_V_mv_bottom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_mv_bottom.Location = new System.Drawing.Point(375, 356);
+            this.label_V_mv_bottom.Name = "label_V_mv_bottom";
+            this.label_V_mv_bottom.Size = new System.Drawing.Size(36, 23);
+            this.label_V_mv_bottom.TabIndex = 9;
+            this.label_V_mv_bottom.Text = "mV";
+            // 
+            // label_V_Rev_Power
+            // 
+            this.label_V_Rev_Power.AutoSize = true;
+            this.label_V_Rev_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Rev_Power.Location = new System.Drawing.Point(113, 469);
+            this.label_V_Rev_Power.Name = "label_V_Rev_Power";
+            this.label_V_Rev_Power.Size = new System.Drawing.Size(99, 23);
+            this.label_V_Rev_Power.TabIndex = 17;
+            this.label_V_Rev_Power.Text = "Rev. Power";
+            // 
+            // label_V_Fwd_Power
+            // 
+            this.label_V_Fwd_Power.AutoSize = true;
+            this.label_V_Fwd_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Fwd_Power.Location = new System.Drawing.Point(112, 429);
+            this.label_V_Fwd_Power.Name = "label_V_Fwd_Power";
+            this.label_V_Fwd_Power.Size = new System.Drawing.Size(103, 23);
+            this.label_V_Fwd_Power.TabIndex = 16;
+            this.label_V_Fwd_Power.Text = "Fwd. Power";
+            // 
+            // label_V_PS_Voltage
+            // 
+            this.label_V_PS_Voltage.AutoSize = true;
+            this.label_V_PS_Voltage.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_PS_Voltage.Location = new System.Drawing.Point(110, 387);
+            this.label_V_PS_Voltage.Name = "label_V_PS_Voltage";
+            this.label_V_PS_Voltage.Size = new System.Drawing.Size(93, 23);
+            this.label_V_PS_Voltage.TabIndex = 15;
+            this.label_V_PS_Voltage.Text = "PS Voltage";
+            // 
+            // label_V_Current
+            // 
+            this.label_V_Current.AutoSize = true;
+            this.label_V_Current.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Current.Location = new System.Drawing.Point(112, 347);
+            this.label_V_Current.Name = "label_V_Current";
+            this.label_V_Current.Size = new System.Drawing.Size(71, 23);
+            this.label_V_Current.TabIndex = 9;
+            this.label_V_Current.Text = "Current";
+            // 
+            // label_V_calc_bottom
+            // 
+            this.label_V_calc_bottom.AutoSize = true;
+            this.label_V_calc_bottom.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_calc_bottom.Location = new System.Drawing.Point(470, 303);
+            this.label_V_calc_bottom.Name = "label_V_calc_bottom";
+            this.label_V_calc_bottom.Size = new System.Drawing.Size(102, 26);
+            this.label_V_calc_bottom.TabIndex = 9;
+            this.label_V_calc_bottom.Text = "Calculated";
+            // 
+            // label_Read_V_bottom
+            // 
+            this.label_Read_V_bottom.AutoSize = true;
+            this.label_Read_V_bottom.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Read_V_bottom.Location = new System.Drawing.Point(276, 304);
+            this.label_Read_V_bottom.Name = "label_Read_V_bottom";
+            this.label_Read_V_bottom.Size = new System.Drawing.Size(56, 26);
+            this.label_Read_V_bottom.TabIndex = 9;
+            this.label_Read_V_bottom.Text = "Read";
+            // 
+            // textBox_V_V_Calc
+            // 
+            this.textBox_V_V_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_V_Calc.Location = new System.Drawing.Point(451, 375);
+            this.textBox_V_V_Calc.Multiline = true;
+            this.textBox_V_V_Calc.Name = "textBox_V_V_Calc";
+            this.textBox_V_V_Calc.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_V_Calc.TabIndex = 14;
+            // 
+            // textBox_V_A_Calc
+            // 
+            this.textBox_V_A_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_A_Calc.Location = new System.Drawing.Point(451, 336);
+            this.textBox_V_A_Calc.Multiline = true;
+            this.textBox_V_A_Calc.Name = "textBox_V_A_Calc";
+            this.textBox_V_A_Calc.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_A_Calc.TabIndex = 13;
+            // 
+            // textBox_V_Rev_Power
+            // 
+            this.textBox_V_Rev_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Rev_Power.Location = new System.Drawing.Point(244, 455);
+            this.textBox_V_Rev_Power.Multiline = true;
+            this.textBox_V_Rev_Power.Name = "textBox_V_Rev_Power";
+            this.textBox_V_Rev_Power.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_Rev_Power.TabIndex = 12;
+            // 
+            // textBox_V_Fwd_Power
+            // 
+            this.textBox_V_Fwd_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Fwd_Power.Location = new System.Drawing.Point(244, 415);
+            this.textBox_V_Fwd_Power.Multiline = true;
+            this.textBox_V_Fwd_Power.Name = "textBox_V_Fwd_Power";
+            this.textBox_V_Fwd_Power.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_Fwd_Power.TabIndex = 11;
+            // 
+            // textBox_V_PS_voltage
+            // 
+            this.textBox_V_PS_voltage.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_PS_voltage.Location = new System.Drawing.Point(244, 375);
+            this.textBox_V_PS_voltage.Multiline = true;
+            this.textBox_V_PS_voltage.Name = "textBox_V_PS_voltage";
+            this.textBox_V_PS_voltage.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_PS_voltage.TabIndex = 10;
+            // 
+            // textBox_V_Current
+            // 
+            this.textBox_V_Current.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Current.Location = new System.Drawing.Point(244, 336);
+            this.textBox_V_Current.Multiline = true;
+            this.textBox_V_Current.Name = "textBox_V_Current";
+            this.textBox_V_Current.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_Current.TabIndex = 9;
+            // 
+            // groupBox_V_Tempretures
+            // 
+            this.groupBox_V_Tempretures.Controls.Add(this.label_V_c);
+            this.groupBox_V_Tempretures.Controls.Add(this.label_V_mv);
+            this.groupBox_V_Tempretures.Controls.Add(this.label_V_bp);
+            this.groupBox_V_Tempretures.Controls.Add(this.label_V_AmpBP);
+            this.groupBox_V_Tempretures.Controls.Add(this.textBox_V_Amp_bp);
+            this.groupBox_V_Tempretures.Controls.Add(this.textBox_V_calc);
+            this.groupBox_V_Tempretures.Controls.Add(this.label_V_calc);
+            this.groupBox_V_Tempretures.Controls.Add(this.label_V_Read);
+            this.groupBox_V_Tempretures.Controls.Add(this.textBox_V_Read_Bp);
+            this.groupBox_V_Tempretures.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_V_Tempretures.Location = new System.Drawing.Point(26, 109);
+            this.groupBox_V_Tempretures.Name = "groupBox_V_Tempretures";
+            this.groupBox_V_Tempretures.Size = new System.Drawing.Size(613, 188);
+            this.groupBox_V_Tempretures.TabIndex = 5;
+            this.groupBox_V_Tempretures.TabStop = false;
+            this.groupBox_V_Tempretures.Text = "Temperatures";
+            // 
+            // label_V_c
+            // 
+            this.label_V_c.AutoSize = true;
+            this.label_V_c.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_c.Location = new System.Drawing.Point(563, 67);
+            this.label_V_c.Name = "label_V_c";
+            this.label_V_c.Size = new System.Drawing.Size(27, 23);
+            this.label_V_c.TabIndex = 8;
+            this.label_V_c.Text = "°C";
+            // 
+            // label_V_mv
+            // 
+            this.label_V_mv.AutoSize = true;
+            this.label_V_mv.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_mv.Location = new System.Drawing.Point(357, 67);
+            this.label_V_mv.Name = "label_V_mv";
+            this.label_V_mv.Size = new System.Drawing.Size(36, 23);
+            this.label_V_mv.TabIndex = 7;
+            this.label_V_mv.Text = "mV";
+            // 
+            // label_V_bp
+            // 
+            this.label_V_bp.AutoSize = true;
+            this.label_V_bp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_bp.Location = new System.Drawing.Point(147, 66);
+            this.label_V_bp.Name = "label_V_bp";
+            this.label_V_bp.Size = new System.Drawing.Size(73, 23);
+            this.label_V_bp.TabIndex = 6;
+            this.label_V_bp.Text = "Amp.BP";
+            // 
+            // label_V_AmpBP
+            // 
+            this.label_V_AmpBP.AutoSize = true;
+            this.label_V_AmpBP.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_AmpBP.Location = new System.Drawing.Point(453, 106);
+            this.label_V_AmpBP.Name = "label_V_AmpBP";
+            this.label_V_AmpBP.Size = new System.Drawing.Size(82, 26);
+            this.label_V_AmpBP.TabIndex = 5;
+            this.label_V_AmpBP.Text = "Amp.BP";
+            // 
+            // textBox_V_Amp_bp
+            // 
+            this.textBox_V_Amp_bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Amp_bp.Location = new System.Drawing.Point(430, 139);
+            this.textBox_V_Amp_bp.Multiline = true;
+            this.textBox_V_Amp_bp.Name = "textBox_V_Amp_bp";
+            this.textBox_V_Amp_bp.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_Amp_bp.TabIndex = 4;
+            // 
+            // textBox_V_calc
+            // 
+            this.textBox_V_calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_calc.Location = new System.Drawing.Point(430, 54);
+            this.textBox_V_calc.Multiline = true;
+            this.textBox_V_calc.Name = "textBox_V_calc";
+            this.textBox_V_calc.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_calc.TabIndex = 3;
+            // 
+            // label_V_calc
+            // 
+            this.label_V_calc.AutoSize = true;
+            this.label_V_calc.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_calc.Location = new System.Drawing.Point(444, 23);
+            this.label_V_calc.Name = "label_V_calc";
+            this.label_V_calc.Size = new System.Drawing.Size(102, 26);
+            this.label_V_calc.TabIndex = 2;
+            this.label_V_calc.Text = "Calculated";
+            // 
+            // label_V_Read
+            // 
+            this.label_V_Read.AutoSize = true;
+            this.label_V_Read.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Read.Location = new System.Drawing.Point(262, 20);
+            this.label_V_Read.Name = "label_V_Read";
+            this.label_V_Read.Size = new System.Drawing.Size(56, 26);
+            this.label_V_Read.TabIndex = 1;
+            this.label_V_Read.Text = "Read";
+            // 
+            // textBox_V_Read_Bp
+            // 
+            this.textBox_V_Read_Bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Read_Bp.Location = new System.Drawing.Point(226, 54);
+            this.textBox_V_Read_Bp.Multiline = true;
+            this.textBox_V_Read_Bp.Name = "textBox_V_Read_Bp";
+            this.textBox_V_Read_Bp.Size = new System.Drawing.Size(125, 37);
+            this.textBox_V_Read_Bp.TabIndex = 0;
+            // 
+            // label_V_PS
+            // 
+            this.label_V_PS.AutoSize = true;
+            this.label_V_PS.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_PS.Location = new System.Drawing.Point(153, 29);
+            this.label_V_PS.Name = "label_V_PS";
+            this.label_V_PS.Size = new System.Drawing.Size(33, 26);
+            this.label_V_PS.TabIndex = 1;
+            this.label_V_PS.Text = "PS";
+            // 
+            // comboBox_V_PA_Routed
+            // 
+            this.comboBox_V_PA_Routed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_V_PA_Routed.FormattingEnabled = true;
+            this.comboBox_V_PA_Routed.Items.AddRange(new object[] {
+            "High",
+            "Low",
+            "Iso"});
+            this.comboBox_V_PA_Routed.Location = new System.Drawing.Point(451, 67);
+            this.comboBox_V_PA_Routed.Name = "comboBox_V_PA_Routed";
+            this.comboBox_V_PA_Routed.Size = new System.Drawing.Size(139, 31);
+            this.comboBox_V_PA_Routed.TabIndex = 4;
+            // 
+            // label_V_Amp
+            // 
+            this.label_V_Amp.AutoSize = true;
+            this.label_V_Amp.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_Amp.Location = new System.Drawing.Point(242, 29);
+            this.label_V_Amp.Name = "label_V_Amp";
+            this.label_V_Amp.Size = new System.Drawing.Size(53, 26);
+            this.label_V_Amp.TabIndex = 2;
+            this.label_V_Amp.Text = "Amp";
+            // 
+            // label_V_PA_Routed
+            // 
+            this.label_V_PA_Routed.AutoSize = true;
+            this.label_V_PA_Routed.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_V_PA_Routed.Location = new System.Drawing.Point(446, 39);
+            this.label_V_PA_Routed.Name = "label_V_PA_Routed";
+            this.label_V_PA_Routed.Size = new System.Drawing.Size(147, 26);
+            this.label_V_PA_Routed.TabIndex = 3;
+            this.label_V_PA_Routed.Text = "PA Routed Gain";
             // 
             // button_OpenFolder
             // 
@@ -4312,13 +5363,27 @@ namespace Monitor
             this.checkBox_Openall.UseVisualStyleBackColor = true;
             this.checkBox_Openall.CheckedChanged += new System.EventHandler(this.checkBox_Openall_CheckedChanged);
             // 
+            // checkBox_Enable_Disable
+            // 
+            this.checkBox_Enable_Disable.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_Enable_Disable.AutoSize = true;
+            this.checkBox_Enable_Disable.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_Enable_Disable.ForeColor = System.Drawing.Color.Red;
+            this.checkBox_Enable_Disable.Location = new System.Drawing.Point(244, 61);
+            this.checkBox_Enable_Disable.Name = "checkBox_Enable_Disable";
+            this.checkBox_Enable_Disable.Size = new System.Drawing.Size(68, 29);
+            this.checkBox_Enable_Disable.TabIndex = 25;
+            this.checkBox_Enable_Disable.Text = "Disable";
+            this.checkBox_Enable_Disable.UseVisualStyleBackColor = true;
+            this.checkBox_Enable_Disable.CheckedChanged += new System.EventHandler(this.checkBox_Enable_Disable_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1543, 711);
+            this.ClientSize = new System.Drawing.Size(1543, 728);
             this.Controls.Add(this.checkBox_Openall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ClentTCPStatus);
@@ -4334,7 +5399,7 @@ namespace Monitor
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
-            this.Text = "3036 - mIFRS";
+            this.Text = "MOXA";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -4375,6 +5440,16 @@ namespace Monitor
             this.tabPage2_Script.PerformLayout();
             this.groupBox32.ResumeLayout(false);
             this.groupBox32.PerformLayout();
+            this.tabPage_MOXA_GUI.ResumeLayout(false);
+            this.tabPage_MOXA_GUI.PerformLayout();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox31.PerformLayout();
+            this.groupBox_H_Tempretures.ResumeLayout(false);
+            this.groupBox_H_Tempretures.PerformLayout();
+            this.groupBox_V_Amp.ResumeLayout(false);
+            this.groupBox_V_Amp.PerformLayout();
+            this.groupBox_V_Tempretures.ResumeLayout(false);
+            this.groupBox_V_Tempretures.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.S1_Configuration.ResumeLayout(false);
             this.groupBox12.ResumeLayout(false);
@@ -13894,13 +14969,13 @@ This Process can take 1 minute.";
             if (checkBox_Openall.Checked == true)
             {
                 tabControl_Main.TabPages.Add(tabPage_ServerTCP);
-                tabControl_Main.TabPages.Add(tabPage_ClientTCP);
+                tabControl_Main.TabPages.Add(tabPage_SerialPort);
                 tabControl_Main.TabPages.Add(tabPage_charts);
             }
             else
             {
                 tabControl_Main.TabPages.Remove(tabPage_ServerTCP);
-                tabControl_Main.TabPages.Remove(tabPage_ClientTCP);
+                tabControl_Main.TabPages.Remove(tabPage_SerialPort);
                 tabControl_Main.TabPages.Remove(tabPage_charts);
             }
         }
@@ -13977,6 +15052,35 @@ This Process can take 1 minute.";
 
 
 
+
+        }
+
+        private void checkBox_On_Off_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_On_Off.Checked)
+            {
+                checkBox_On_Off.Text = "On";
+                checkBox_On_Off.ForeColor = Color.Green;
+            }
+            else
+            {
+                checkBox_On_Off.Text = "OFF";
+                checkBox_On_Off.ForeColor = Color.Red;
+            }
+        }
+
+        private void checkBox_Enable_Disable_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Enable_Disable.Checked)
+            {
+                checkBox_Enable_Disable.Text = "Enable";
+                checkBox_Enable_Disable.ForeColor = Color.Green;
+            }
+            else
+            {
+                checkBox_Enable_Disable.Text = "Disable";
+                checkBox_Enable_Disable.ForeColor = Color.Red;
+            }
 
         }
 
@@ -14221,10 +15325,10 @@ Use the arrows Up, Down and Tab for autocomplition.
         void LoadDefaultSettings()
         {
             cmb_StopBits.DataSource = Enum.GetValues(typeof(StopBits));
-            cmb_StopBits.SelectedIndex = (int)StopBits.One;
+            //cmb_StopBits.SelectedIndex = (int)StopBits.One;
 
             cmbParity.DataSource = Enum.GetValues(typeof(Parity));
-            cmbParity.SelectedIndex = (int)Parity.None;
+           // cmbParity.SelectedIndex = (int)Parity.None;
 
             txtPortNo.Text = Monitor.Properties.Settings.Default.Start_Port;
             txtDataTx.Text = Monitor.Properties.Settings.Default.Default_Server_Message;
@@ -14249,10 +15353,10 @@ Use the arrows Up, Down and Tab for autocomplition.
         {
             try
             {
-
-                tabControl_Main.TabPages.RemoveAt(0);
-                tabControl_Main.TabPages.RemoveAt(0);
-                tabControl_Main.TabPages.RemoveAt(0);
+                
+                tabControl_Main.TabPages.Remove(tabPage_ServerTCP);
+                tabControl_Main.TabPages.Remove(tabPage_SerialPort);
+                tabControl_Main.TabPages.Remove(tabPage_charts);
 
 
 
