@@ -131,6 +131,9 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
+    <Reference Include="NModbus, Version=3.0.78.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\NModbus.3.0.78\lib\net46\NModbus.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandClass.cs" />
@@ -160,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

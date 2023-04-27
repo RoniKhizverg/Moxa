@@ -18,6 +18,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Serialization;
+using NModbus;
+
+
+
+
 
 namespace Monitor
 {
@@ -502,8 +507,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -1644,17 +1649,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea5.AxisX.Title = "Freq";
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisY.Title = "Power [dBm]";
-            chartArea5.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend5.IsTextAutoFit = false;
-            legend5.Name = "Legend1";
-            legend5.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend5);
+            chartArea6.AxisX.Title = "Freq";
+            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.AxisY.Title = "Power [dBm]";
+            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            legend6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend6.IsTextAutoFit = false;
+            legend6.Name = "Legend1";
+            legend6.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend6);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -2853,6 +2858,7 @@ namespace Monitor
             // textBox_H_V_Calc
             // 
             this.textBox_H_V_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_V_Calc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_V_Calc.Location = new System.Drawing.Point(451, 375);
             this.textBox_H_V_Calc.Multiline = true;
             this.textBox_H_V_Calc.Name = "textBox_H_V_Calc";
@@ -2862,6 +2868,7 @@ namespace Monitor
             // textBox_H_A_Calc
             // 
             this.textBox_H_A_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_A_Calc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_A_Calc.Location = new System.Drawing.Point(451, 336);
             this.textBox_H_A_Calc.Multiline = true;
             this.textBox_H_A_Calc.Name = "textBox_H_A_Calc";
@@ -2871,6 +2878,7 @@ namespace Monitor
             // textBox_H_Rev_Power
             // 
             this.textBox_H_Rev_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Rev_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_Rev_Power.Location = new System.Drawing.Point(244, 455);
             this.textBox_H_Rev_Power.Multiline = true;
             this.textBox_H_Rev_Power.Name = "textBox_H_Rev_Power";
@@ -2880,6 +2888,7 @@ namespace Monitor
             // textBox_H_Fwd_Power
             // 
             this.textBox_H_Fwd_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Fwd_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_Fwd_Power.Location = new System.Drawing.Point(244, 415);
             this.textBox_H_Fwd_Power.Multiline = true;
             this.textBox_H_Fwd_Power.Name = "textBox_H_Fwd_Power";
@@ -2889,6 +2898,7 @@ namespace Monitor
             // textBox_H_PS_voltage
             // 
             this.textBox_H_PS_voltage.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_PS_voltage.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_PS_voltage.Location = new System.Drawing.Point(244, 375);
             this.textBox_H_PS_voltage.Multiline = true;
             this.textBox_H_PS_voltage.Name = "textBox_H_PS_voltage";
@@ -2898,6 +2908,7 @@ namespace Monitor
             // textBox_H_Current
             // 
             this.textBox_H_Current.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Current.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_Current.Location = new System.Drawing.Point(244, 336);
             this.textBox_H_Current.Multiline = true;
             this.textBox_H_Current.Name = "textBox_H_Current";
@@ -2938,6 +2949,7 @@ namespace Monitor
             // textBox_Mid_Chamber
             // 
             this.textBox_Mid_Chamber.BackColor = System.Drawing.Color.Lime;
+            this.textBox_Mid_Chamber.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_Mid_Chamber.Location = new System.Drawing.Point(10, 139);
             this.textBox_Mid_Chamber.Multiline = true;
             this.textBox_Mid_Chamber.Name = "textBox_Mid_Chamber";
@@ -2987,6 +2999,7 @@ namespace Monitor
             // textBox_H_Amp_bp
             // 
             this.textBox_H_Amp_bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Amp_bp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_Amp_bp.Location = new System.Drawing.Point(430, 139);
             this.textBox_H_Amp_bp.Multiline = true;
             this.textBox_H_Amp_bp.Name = "textBox_H_Amp_bp";
@@ -2996,6 +3009,7 @@ namespace Monitor
             // textBox_H_calc
             // 
             this.textBox_H_calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_calc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_calc.Location = new System.Drawing.Point(430, 54);
             this.textBox_H_calc.Multiline = true;
             this.textBox_H_calc.Name = "textBox_H_calc";
@@ -3025,6 +3039,7 @@ namespace Monitor
             // textBox_H_Read_Bp
             // 
             this.textBox_H_Read_Bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_H_Read_Bp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_H_Read_Bp.Location = new System.Drawing.Point(226, 54);
             this.textBox_H_Read_Bp.Multiline = true;
             this.textBox_H_Read_Bp.Name = "textBox_H_Read_Bp";
@@ -3257,6 +3272,7 @@ namespace Monitor
             // textBox_V_V_Calc
             // 
             this.textBox_V_V_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_V_Calc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_V_Calc.Location = new System.Drawing.Point(451, 375);
             this.textBox_V_V_Calc.Multiline = true;
             this.textBox_V_V_Calc.Name = "textBox_V_V_Calc";
@@ -3266,6 +3282,7 @@ namespace Monitor
             // textBox_V_A_Calc
             // 
             this.textBox_V_A_Calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_A_Calc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_A_Calc.Location = new System.Drawing.Point(451, 336);
             this.textBox_V_A_Calc.Multiline = true;
             this.textBox_V_A_Calc.Name = "textBox_V_A_Calc";
@@ -3275,6 +3292,7 @@ namespace Monitor
             // textBox_V_Rev_Power
             // 
             this.textBox_V_Rev_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Rev_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_Rev_Power.Location = new System.Drawing.Point(244, 455);
             this.textBox_V_Rev_Power.Multiline = true;
             this.textBox_V_Rev_Power.Name = "textBox_V_Rev_Power";
@@ -3284,6 +3302,7 @@ namespace Monitor
             // textBox_V_Fwd_Power
             // 
             this.textBox_V_Fwd_Power.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Fwd_Power.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_Fwd_Power.Location = new System.Drawing.Point(244, 415);
             this.textBox_V_Fwd_Power.Multiline = true;
             this.textBox_V_Fwd_Power.Name = "textBox_V_Fwd_Power";
@@ -3293,6 +3312,7 @@ namespace Monitor
             // textBox_V_PS_voltage
             // 
             this.textBox_V_PS_voltage.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_PS_voltage.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_PS_voltage.Location = new System.Drawing.Point(244, 375);
             this.textBox_V_PS_voltage.Multiline = true;
             this.textBox_V_PS_voltage.Name = "textBox_V_PS_voltage";
@@ -3302,6 +3322,7 @@ namespace Monitor
             // textBox_V_Current
             // 
             this.textBox_V_Current.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Current.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_Current.Location = new System.Drawing.Point(244, 336);
             this.textBox_V_Current.Multiline = true;
             this.textBox_V_Current.Name = "textBox_V_Current";
@@ -3370,6 +3391,7 @@ namespace Monitor
             // textBox_V_Amp_bp
             // 
             this.textBox_V_Amp_bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Amp_bp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_Amp_bp.Location = new System.Drawing.Point(430, 139);
             this.textBox_V_Amp_bp.Multiline = true;
             this.textBox_V_Amp_bp.Name = "textBox_V_Amp_bp";
@@ -3379,6 +3401,7 @@ namespace Monitor
             // textBox_V_calc
             // 
             this.textBox_V_calc.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_calc.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_calc.Location = new System.Drawing.Point(430, 54);
             this.textBox_V_calc.Multiline = true;
             this.textBox_V_calc.Name = "textBox_V_calc";
@@ -3408,6 +3431,7 @@ namespace Monitor
             // textBox_V_Read_Bp
             // 
             this.textBox_V_Read_Bp.BackColor = System.Drawing.Color.Lime;
+            this.textBox_V_Read_Bp.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_V_Read_Bp.Location = new System.Drawing.Point(226, 54);
             this.textBox_V_Read_Bp.Multiline = true;
             this.textBox_V_Read_Bp.Name = "textBox_V_Read_Bp";
@@ -10199,7 +10223,6 @@ namespace Monitor
                 //MessageBox.Show(se.Message);
             }
         }
-
         private bool m_Exit = false;
         private TcpClient ClientSocket;
         private Thread ReceiveThread;
@@ -10279,7 +10302,6 @@ namespace Monitor
                 //MessageBox.Show (se.Message );
             }
         }
-
         private void Button43_Click_1(object sender, EventArgs e)
         {
             richTextBox_ClientTx.Text = "";
