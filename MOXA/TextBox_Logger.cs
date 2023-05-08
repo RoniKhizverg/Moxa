@@ -306,7 +306,7 @@ namespace Monitor
                     LogClassArray = LogClassArray.OrderBy(x => x.Msg_DatetimeCreated).Take(50).ToList();
                 }
 
-                if (m_RecordTofile.Checked)
+                if (m_RecordTofile != null && m_RecordTofile.Checked)
                 {
                     // your code goes here
 

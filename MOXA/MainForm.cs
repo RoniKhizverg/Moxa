@@ -19,6 +19,15 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Serialization;
 using NModbus;
+using NModbus.Utility;
+using System.Globalization;
+using EasyModbus;
+using EasyModbus.Exceptions;
+using Modbus.Device;
+using Modbus.Data;
+//using ModbusTcp;
+
+
 
 
 
@@ -507,8 +516,8 @@ namespace Monitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_ServerSettings = new System.Windows.Forms.GroupBox();
             this.textBox_ServerOpen = new System.Windows.Forms.TextBox();
@@ -689,6 +698,7 @@ namespace Monitor
             this.label_H_Amp = new System.Windows.Forms.Label();
             this.label_H_PA_Routed = new System.Windows.Forms.Label();
             this.groupBox_V_Amp = new System.Windows.Forms.GroupBox();
+            this.checkBox_Enable_Disable = new System.Windows.Forms.CheckBox();
             this.checkBox_On_Off = new System.Windows.Forms.CheckBox();
             this.label_V_Fan_indicator = new System.Windows.Forms.Label();
             this.label_V_Abottom = new System.Windows.Forms.Label();
@@ -909,7 +919,6 @@ namespace Monitor
             this.saveFileDialog_Local = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog_Local = new System.Windows.Forms.OpenFileDialog();
             this.checkBox_Openall = new System.Windows.Forms.CheckBox();
-            this.checkBox_Enable_Disable = new System.Windows.Forms.CheckBox();
             this.groupBox_ServerSettings.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl_Main.SuspendLayout();
@@ -1024,7 +1033,7 @@ namespace Monitor
             this.txtPortNo.Name = "txtPortNo";
             this.txtPortNo.Size = new System.Drawing.Size(38, 23);
             this.txtPortNo.TabIndex = 1;
-            this.txtPortNo.Text = "7000";
+            this.txtPortNo.Text = "8080";
             this.txtPortNo.TextChanged += new System.EventHandler(this.TxtPortNo_TextChanged);
             // 
             // textBox_NumberOfOpenConnections
@@ -1420,7 +1429,8 @@ namespace Monitor
             this.button3.TabIndex = 5;
             this.button3.Text = "Send";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click_4);
+            this.button3.Click += new System.EventHandler(this.Button3_Click_4Async);
+
             // 
             // richTextBox_ClientTx
             // 
@@ -1438,8 +1448,7 @@ namespace Monitor
             this.textBox_ClientPort.Name = "textBox_ClientPort";
             this.textBox_ClientPort.Size = new System.Drawing.Size(92, 26);
             this.textBox_ClientPort.TabIndex = 3;
-            this.textBox_ClientPort.Text = "7";
-            this.textBox_ClientPort.TextChanged += new System.EventHandler(this.textBox_ClientPort_TextChanged);
+            this.textBox_ClientPort.Text = "502";
             // 
             // textBox_ClientIP
             // 
@@ -1448,7 +1457,7 @@ namespace Monitor
             this.textBox_ClientIP.Name = "textBox_ClientIP";
             this.textBox_ClientIP.Size = new System.Drawing.Size(92, 26);
             this.textBox_ClientIP.TabIndex = 2;
-            this.textBox_ClientIP.Text = "192.168.1.10";
+            this.textBox_ClientIP.Text = "192.168.127.254";
             // 
             // label8
             // 
@@ -1649,17 +1658,17 @@ namespace Monitor
             // 
             // chart1
             // 
-            chartArea6.AxisX.Title = "Freq";
-            chartArea6.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.AxisY.Title = "Power [dBm]";
-            chartArea6.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend6.IsTextAutoFit = false;
-            legend6.Name = "Legend1";
-            legend6.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chart1.Legends.Add(legend6);
+            chartArea1.AxisX.Title = "Freq";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.Title = "Power [dBm]";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            legend1.TitleFont = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(178, 2);
             this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
@@ -3124,6 +3133,20 @@ namespace Monitor
             this.groupBox_V_Amp.TabIndex = 1;
             this.groupBox_V_Amp.TabStop = false;
             this.groupBox_V_Amp.Text = "Amp. V";
+            // 
+            // checkBox_Enable_Disable
+            // 
+            this.checkBox_Enable_Disable.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox_Enable_Disable.AutoSize = true;
+            this.checkBox_Enable_Disable.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox_Enable_Disable.ForeColor = System.Drawing.Color.Red;
+            this.checkBox_Enable_Disable.Location = new System.Drawing.Point(244, 61);
+            this.checkBox_Enable_Disable.Name = "checkBox_Enable_Disable";
+            this.checkBox_Enable_Disable.Size = new System.Drawing.Size(68, 29);
+            this.checkBox_Enable_Disable.TabIndex = 25;
+            this.checkBox_Enable_Disable.Text = "Disable";
+            this.checkBox_Enable_Disable.UseVisualStyleBackColor = true;
+            this.checkBox_Enable_Disable.CheckedChanged += new System.EventHandler(this.checkBox_Enable_Disable_CheckedChanged);
             // 
             // checkBox_On_Off
             // 
@@ -5387,27 +5410,13 @@ namespace Monitor
             this.checkBox_Openall.UseVisualStyleBackColor = true;
             this.checkBox_Openall.CheckedChanged += new System.EventHandler(this.checkBox_Openall_CheckedChanged);
             // 
-            // checkBox_Enable_Disable
-            // 
-            this.checkBox_Enable_Disable.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox_Enable_Disable.AutoSize = true;
-            this.checkBox_Enable_Disable.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox_Enable_Disable.ForeColor = System.Drawing.Color.Red;
-            this.checkBox_Enable_Disable.Location = new System.Drawing.Point(244, 61);
-            this.checkBox_Enable_Disable.Name = "checkBox_Enable_Disable";
-            this.checkBox_Enable_Disable.Size = new System.Drawing.Size(68, 29);
-            this.checkBox_Enable_Disable.TabIndex = 25;
-            this.checkBox_Enable_Disable.Text = "Disable";
-            this.checkBox_Enable_Disable.UseVisualStyleBackColor = true;
-            this.checkBox_Enable_Disable.CheckedChanged += new System.EventHandler(this.checkBox_Enable_Disable_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1543, 728);
+            this.ClientSize = new System.Drawing.Size(1543, 745);
             this.Controls.Add(this.checkBox_Openall);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox_ClentTCPStatus);
@@ -5533,6 +5542,8 @@ namespace Monitor
             this.PerformLayout();
 
         }
+
+
 
         private readonly List<string> CommandsHistoy = new List<string>();
         //   private readonly List<string> CLI_CommandsHistoy = new List<string>();
@@ -6108,6 +6119,9 @@ namespace Monitor
         private TextBox_Logger SystemLogger;
         private TextBox_Logger ServerLogger;
         private TextBox_Logger SerialPortLogger;
+        private TextBox_Logger ClientLoggerRX;
+        private TextBox_Logger ClientLoggerTX;
+
 
         //   Logger LogIWatcher;
         // TextBox_Logger LogSMS;
@@ -8332,14 +8346,9 @@ namespace Monitor
             SystemLogger.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
             SystemLogger.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
 
-            //if (i_msg.Contains("ACK") == true)
-            //{
-            //    SystemLogger.LogMessage(Color.DarkGreen, Color.White, i_msg, true, false);
-            //}
-            //else
-            //{
+      
             SystemLogger.LogMessage(Color.Blue, Color.LightGray, i_msg, true, false);
-            //}
+
 
             GlobalSystemResultReceived += i_msg;
         }
@@ -8622,7 +8631,7 @@ namespace Monitor
                         {
 
                             string str = System.Text.Encoding.Default.GetString(TCPClientBuffer);
-                            richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + str + "\n \n");
+                            //richTextBox_ClientRxPrintText("[" + DateTime.Now.TimeOfDay.ToString().Substring(0, 11) + "] " + str + "\n \n");
                             TCPClientBuffer = new byte[0];
                             PClientSocket = ClientSocket;
                         }
@@ -10080,6 +10089,7 @@ namespace Monitor
             //Tab0Color = randomColor;
         }
 
+
         private bool IsPauseGraphs = false;
         private void Button_GraphPause_Click(object sender, EventArgs e)
         {
@@ -10150,10 +10160,12 @@ namespace Monitor
         }
 
         private byte[] TCPClientBuffer = new byte[0];
-
+      
         private void ReceiveData()
         {
+
             TcpClient PClientSocket = ClientSocket;
+
             try
             {
                 while (true)
@@ -10163,66 +10175,57 @@ namespace Monitor
                         return;
                     }
 
-                    if (PClientSocket != null)
+                    if (PClientSocket != null && PClientSocket.Connected)
                     {
                         try
                         {
-                            byte[] buffer = new byte[1000000];
-                            Stream stm = PClientSocket.GetStream();
+                            byte[] buffer = new byte[10000];
+                            NetworkStream stm = PClientSocket.GetStream();
 
-
-
-                            int NumOfReceivedBytes = stm.Read(buffer, 0, buffer.Length);
-                            if (WaitforBufferFull == 0)
+                            // Read all available data from the stream
+                            while (stm.DataAvailable)
                             {
-                                TCPClientBuffer = new byte[NumOfReceivedBytes];
-                                Array.Copy(buffer, 0, TCPClientBuffer, 0, NumOfReceivedBytes);
 
+                                int NumOfReceivedBytes = stm.Read(buffer, 0, buffer.Length);
 
+                                if (WaitforBufferFull == 0)
+                                {
+                                    TCPClientBuffer = new byte[NumOfReceivedBytes];
+                                    Array.Copy(buffer, 0, TCPClientBuffer, 0, NumOfReceivedBytes);
+                                }
+                                else
+                                {
+                                    byte[] temp = new byte[NumOfReceivedBytes + TCPClientBuffer.Length];
+                                    TCPClientBuffer.CopyTo(temp, 0);
+                                    Array.Copy(buffer, 0, temp, TCPClientBuffer.Length, NumOfReceivedBytes);
+                                    TCPClientBuffer = temp;
+                                    PrintToClientLoggerRX(TCPClientBuffer);
+                                }
                             }
-                            else
-                            {
-                                byte[] temp = new byte[NumOfReceivedBytes + TCPClientBuffer.Length];
-                                TCPClientBuffer.CopyTo(temp, 0);
-                                Array.Copy(buffer, 0, temp, TCPClientBuffer.Length, NumOfReceivedBytes);
-                                //buffer.CopyTo(temp, NumOfReceivedBytes);
-                                TCPClientBuffer = temp;
-
-
-                            }
-
-
-
-
-
-
                         }
                         catch (Exception ex)
                         {
-
-
                             SystemLogger.LogMessage(Color.Black, Color.Red, "Gil: " + ex.ToString(), New_Line = true, Show_Time = true);
-
-
                             return;
-
-
-
                         }
                     }
                     else
                     {
-                        PClientSocket.Close();
+                        PClientSocket?.Close();
+                        break; // Exit the loop if the socket is closed or not connected
                     }
 
+               
                 }
+
             }
             catch (System.Net.Sockets.SocketException se)
             {
                 se.ToString(); //Gil: just remove warning.
-                //MessageBox.Show(se.Message);
+                               //MessageBox.Show(se.Message);
             }
         }
+
         private bool m_Exit = false;
         private TcpClient ClientSocket;
         private Thread ReceiveThread;
@@ -10273,35 +10276,212 @@ namespace Monitor
             }
         }
 
-        private void Button3_Click_4(object sender, EventArgs e)
+
+        private void PrintToClientLoggerRX(byte[] data)
+        {
+            if (data != null && data.Length > 0)
+            {
+
+                ClientLoggerRX.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
+                ClientLoggerRX.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
+                ClientLoggerRX.LogMessage(Color.Blue, Color.Azure, ConvertByteArraytToString(data), true, false);
+                Modbus_DataReceived(data);
+
+            }
+        }
+
+
+        private String SendModbus(string i_Command, bool i_OnlyCheckValidity)
+        {
+            string ret = "";
+            string[] tempStr = i_Command.Split(' ');
+
+            int NumOfArguments = tempStr.Length;
+            if (!(NumOfArguments == 2) || tempStr[1] == "" || tempStr[1] == " " || tempStr[1] == "\n")
+            {
+                ret += string.Format("\n Arguments number should be 1, please check the spaces or empty lines in the text", NumOfArguments);
+            }
+
+            // Split the second argument into pairs of hexadecimal digits and convert them to bytes
+            string value = tempStr[1];
+            List<byte> bytesList = new List<byte>();
+            for (int i = 0; i < value.Length; i += 2)
+            {
+                if (i + 1 >= value.Length)
+                {
+                    ret += string.Format("\n Invalid input, expected an even number of hexadecimal digits");
+                    return ret;
+                }
+                if (!byte.TryParse(value.Substring(i, 2), NumberStyles.HexNumber, null, out byte b))
+                {
+                    ret += string.Format("\n Invalid input, value contains non-hexadecimal characters");
+                    return ret;
+                }
+                bytesList.Add(b);
+            }
+            byte[] bytes = bytesList.ToArray();
+
+            if (i_OnlyCheckValidity == true || ret != "")
+            {
+                return ret;
+            }
+
+            if (bytes == null || bytes.Length < 8)
+            {
+                ret += string.Format("\n Invalid input, expected at least 8 bytes");
+                return ret;
+            }
+
+            if (ret == "" && i_OnlyCheckValidity == false)
+            {
+                //Execute the command
+                PrintToSystemLogerTxMessage(i_Command);
+                richTextBox_ClientTx.Text = ConvertByteArraytToString(bytes);
+                Button3_Click_4Async(null, null);
+            }
+            
+            return ret;
+        }
+
+
+        private void Modbus_DataReceived(byte[] Data)
+        {
+            // Read the Modbus TCP response from the server
+            byte[] response = new byte[1024];
+            Array.Copy(Data, response, Data.Length);
+
+            // Extract the data from the Modbus TCP response
+            //int byteCount = response[8];
+            //byte[] data = new byte[byteCount];
+            //Array.Copy(response, 9, data, 0, byteCount);
+
+            /************ sholud add here switch case by opertion for knowing if ti print Read register , Write register etc..... *******************/
+ 
+            string RxMessageToClientLogger = "Read register : { " + ConvertByteArraytToString(Data) + "}"; 
+
+
+            SendMessageToSystemLogger(RxMessageToClientLogger);
+        }
+
+
+        private async void Button3_Click_4Async(object sender, EventArgs e)
         {
             try
             {
-                string str = richTextBox_ClientTx.Text;
-                Stream stm = ClientSocket.GetStream();
+                // Create a TCP connection to the Modbus slave device
+                ModbusIpMaster modbusClient = ModbusIpMaster.CreateIp(ClientSocket);
 
-                ASCIIEncoding asen = new ASCIIEncoding();
-                byte[] ba = asen.GetBytes(str);
+                // Read the command from the text box
+                string command = richTextBox_ClientTx.Text.Trim();
 
-                //byte[] sspData = SSP_Protocol.SSP_Protocol.SSPPacket_Encoder(SSP_Protocol.eMessegeType.TRACE, ba);
+                // Parse the command into a byte array
+                byte[] data = ConvertHexStringToByteArray(command);
 
-                // Console.WriteLine("Sending...");
+                // Send the Modbus request to the server
+                ushort startAddress=0;
+                ushort numberOfRegisters;
+                ushort[] holdingRegisters;
+                bool[] coilValues;
+                ushort[] registerValues;
 
-                stm.Write(ba, 0, ba.Length);
+                byte functionCode = data[7];
+                switch (functionCode)
+                {
+                    case 0x03: // Read Holding Registers
+                       //startAddress = BitConverter.ToUInt16(data, 8);
+                       //numberOfRegisters = BitConverter.ToUInt16(data, 10);
+                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                      
+                        numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                        holdingRegisters = await modbusClient.ReadHoldingRegistersAsync(startAddress, numberOfRegisters);
 
-                //WaitforBufferFull = 1;
+                        break;
 
-                //ClentSendData++;
-                //richTextBox_ClientTx.Text = "Send Data to Server " + ClentSendData;
+                    case 0x05: // Write Single Coil
+                        startAddress = BitConverter.ToUInt16(data, 0);
+                        bool value = BitConverter.ToBoolean(data, 2);
+                        await modbusClient.WriteSingleCoilAsync(startAddress, value);
+                        break;
 
-                // byte[] bb = new byte[100];
+                    case 0x06: // Write Single Register
+                        startAddress = BitConverter.ToUInt16(data, 0);
+                        ushort registerValue = (ushort)BitConverter.ToInt16(data, 2);
+                        await modbusClient.WriteSingleRegisterAsync(startAddress, registerValue);
+                        break;
 
+                    case 0x04: // Read Input Registers
+
+
+                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);         
+                        numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                       // startAddress = BitConverter.ToUInt16(data, 0);
+                       // numberOfRegisters = BitConverter.ToUInt16(data, 2);
+                        holdingRegisters = await modbusClient.ReadInputRegistersAsync(startAddress, numberOfRegisters);
+                        //Modbus_DataReceived(response);
+                        break;
+
+                    case 0x0F: // Write Multiple Coils
+                        // startAddress = BitConverter.ToUInt16(data, 0);
+                        // numberOfRegisters = BitConverter.ToUInt16(data, 2);
+                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                        numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+
+                        coilValues = new bool[numberOfRegisters];
+                        for (int i = 0; i < numberOfRegisters; i++)
+                        {
+                            coilValues[i] = BitConverter.ToBoolean(data, 4 + i);
+                        }
+                        await modbusClient.WriteMultipleCoilsAsync(startAddress, coilValues);
+                        break;
+
+                    case 0x10: // Write Multiple Registers
+
+                        //startAddress = BitConverter.ToUInt16(data, 0);
+                        //numberOfRegisters = BitConverter.ToUInt16(data, 2);
+
+                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                        numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+
+                        registerValues = new ushort[numberOfRegisters];
+                        for (int i = 0; i < numberOfRegisters; i++)
+                        {
+                            registerValues[i] = (ushort)BitConverter.ToInt16(data, 4 + i * 2);
+                        }
+                        await modbusClient.WriteMultipleRegistersAsync(startAddress, registerValues);
+                        break;
+
+                    default:
+                        MessageBox.Show("Invalid function code: " + functionCode.ToString("X2"));
+                        break;
+                }
+
+                modbusClient.Transport.Dispose();
             }
-            catch
+            catch (Exception ex)
             {
-                //MessageBox.Show (se.Message );
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+
+        private byte[] ConvertHexStringToByteArray(string hexString)
+        {
+            hexString = hexString.Replace(" ", "");
+            if (hexString.Length % 2 != 0)
+            {
+                hexString = "0" + hexString;
+            }
+
+            byte[] bytes = new byte[hexString.Length / 2];
+            for (int i = 0; i < hexString.Length; i += 2)
+            {
+                bytes[i / 2] = Convert.ToByte(hexString.Substring(i, 2), 16);
+            }
+
+            return bytes;
+        }
+
+
         private void Button43_Click_1(object sender, EventArgs e)
         {
             richTextBox_ClientTx.Text = "";
@@ -14586,13 +14766,9 @@ This Process can take 1 minute.";
 
                     //ret = await ExectuteOrCheckValidityCommand(i_Command, false);
                     switch (CommandName)
-                    {
-                        case "WriteReg32":
-                            ret = await WriteReg32(i_Command, i_OnlyCheckValidity);
-                            break;
-
-                        case "ReadReg32":
-                            ret = ReadReg32(i_Command, i_OnlyCheckValidity);
+                    {        
+                        case "SendModbus":
+                            ret = SendModbus(i_Command, i_OnlyCheckValidity);
                             break;
 
                         case "SetFullParams":
@@ -14981,10 +15157,6 @@ This Process can take 1 minute.";
 
         }
 
-        private void textBox_ClientPort_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkBox_Openall_CheckedChanged(object sender, EventArgs e)
         {
@@ -15106,6 +15278,11 @@ This Process can take 1 minute.";
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void Button_ResetTimer_Click(object sender, EventArgs e)
         {
             ResetTimer();
@@ -15168,51 +15345,32 @@ This Process can take 1 minute.";
         void SetAllCLIcommands()
         {
 
-
-
-            CommandClass WriteReg32 = new CommandClass("WriteReg32",
+            CommandClass SendModbus = new CommandClass("SendModbus",
 @"
 Description: 
-Write to Register 
 
 Number of arguments:
-2 or 4
+1
+Syntax: 
 
-Syntax 2 arguments:
-WriteReg 
-address [4 hex bytes] 
-data [4 hex bytes]
+Example:
 
-Syntax 4 arguments:
-WriteReg 
-address [4 hex bytes] 
-data [4 hex bytes]
-mask [4 hex bytes] - if mask is set
-Delay between Read and write (only when using mask) [integer decimal]
+Request:
 
-Examples:
-
-WriteReg32 00000000 1234ABCD
-    Write to Register 00000000 1234ABCD
-
-WriteReg32 00000000 12345678 FFFF0000 1000
-    Read Register 0x00000000 modify 0xXXXX5678 and write back to 0x00000000 with delay of 1000 ms between read and write
-
-in order to see full status add _s to the Address For example:
-
-WriteReg32 00000000_s 1234ABCD
-
-",
-"WriteReg32 00000000 1234ABCD");
-
-            //WriteReg32.Example = "WriteReg AAAAAAAA BBBBBBBB FFFF0000 1000";
-
-            List_AllCommands.Add(WriteReg32);
+    0x00, 0x01, // Transaction ID (2 bytes, set to 0 for Modbus TCP)
+    0x00, 0x00, // Protocol ID (2 bytes, set to 0 for Modbus TCP)
+    0x00, 0x06, // Length of remaining message (2 bytes)
+    0x01,       // Unit ID (1 byte, set to the slave address of your MOXA ioThink 4510)
+    0x03,       // Function code (1 byte, set to 0x03 for Read Holding Registers)
+    0x9C, 0x41, // Starting address of the register to read (2 bytes)
+    0x00, 0x01  // Number of registers to read (2 bytes, set to 1 for a single 16-bit register)
 
 
+SendModbus 00010000000601039C410001 
+   ",
+"SendModbus 00010000000601039C410001");
 
-
-
+            List_AllCommands.Add(SendModbus);
 
 
             CommandClass ReadReg32 = new CommandClass("ReadReg32",
@@ -15360,8 +15518,8 @@ Use the arrows Up, Down and Tab for autocomplition.
             cmbParity.Text = Monitor.Properties.Settings.Default.Comport_Parity;
             cmb_PortName.Text = Monitor.Properties.Settings.Default.Comport_Port;
             textBox_TimeBetweenComands.Text = Monitor.Properties.Settings.Default.TimeBetweenCLICommands;
-            textBox_ClientIP.Text = Monitor.Properties.Settings.Default.IP_Client;
-            textBox_ClientPort.Text = Monitor.Properties.Settings.Default.Port_Client;
+            //textBox_ClientIP.Text = Monitor.Properties.Settings.Default.IP_Client;
+            //textBox_ClientPort.Text = Monitor.Properties.Settings.Default.Port_Client;
 
             foreach (String line in Monitor.Properties.Settings.Default.Script)
             {
@@ -15396,6 +15554,8 @@ Use the arrows Up, Down and Tab for autocomplition.
                 ServerLogger = new TextBox_Logger("Server", TextBox_Server, button_ClearServer, checkBox_ServerPause, checkBox_ServerRecord, null, null, null, checkBox_StopLogging);
                 SerialPortLogger = new TextBox_Logger("Serial_Port", SerialPortLogger_TextBox, button_ClearSerialPort, checkBox_SerialPortPause, checkBox_SerialPortRecordLog, textBox_SerialPortRecognizePattern, textBox_SerialPortRecognizePattern2, textBox_SerialPortRecognizePattern3, null);
                 SystemLogger = new TextBox_Logger("SystemLogger", richTextBox_SSPA, button_ClearMiniAda, checkBox_PauseMiniAda, checkBox_RecordMiniAda, textBox_CLIrecognize1, textBox_CLIrecognize2, textBox_CLIrecognize3, checkBox_StopLogging);
+                ClientLoggerRX = new TextBox_Logger("ClientLoggerRX", richTextBox_ClientRx, button_ClearRx, null, null, null, null, null, null);
+                ClientLoggerTX = new TextBox_Logger("ClientLoggerTX", richTextBox_ClientTx, button43, null, null, null, null, null, null);
 
 
                 ScanComports();
