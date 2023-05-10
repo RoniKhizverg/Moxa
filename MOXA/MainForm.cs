@@ -21,8 +21,6 @@ using System.Xml.Serialization;
 using NModbus;
 using NModbus.Utility;
 using System.Globalization;
-using EasyModbus;
-using EasyModbus.Exceptions;
 using Modbus.Device;
 using Modbus.Data;
 //using ModbusTcp;
@@ -10119,15 +10117,26 @@ namespace Monitor
 
         private void CloseClentConnection()
         {
+
+            /*
+            if (modbusClient != null)
+            {
+                //ClientSocket.GetStream().Close();
+                modbusClient?.Dispose();
+            }
+            */
+
+
+
             if (ClientSocket != null)
             {
                 //ClientSocket.GetStream().Close();
-                ClientSocket.Close();
+                ClientSocket?.Close();
             }
 
             if (ReceiveThread != null)
             {
-                ReceiveThread.Abort();
+                ReceiveThread?.Abort();
                 //   m_Exit = true;
 
             }
@@ -10170,6 +10179,7 @@ namespace Monitor
             {
                 while (true)
                 {
+
                     if (m_Exit == true)
                     {
                         return;
@@ -10199,6 +10209,7 @@ namespace Monitor
                                     TCPClientBuffer.CopyTo(temp, 0);
                                     Array.Copy(buffer, 0, temp, TCPClientBuffer.Length, NumOfReceivedBytes);
                                     TCPClientBuffer = temp;
+
                                     PrintToClientLoggerRX(TCPClientBuffer);
                                 }
                             }
@@ -10215,7 +10226,6 @@ namespace Monitor
                         break; // Exit the loop if the socket is closed or not connected
                     }
 
-               
                 }
 
             }
@@ -10229,6 +10239,9 @@ namespace Monitor
         private bool m_Exit = false;
         private TcpClient ClientSocket;
         private Thread ReceiveThread;
+        private ModbusIpMaster modbusClient;
+
+
         private void Button_ClientConnect_Click(object sender, EventArgs e)
         {
             try
@@ -10266,6 +10279,7 @@ namespace Monitor
 
                 if (ClientSocket.Connected)
                 {
+                    modbusClient = ModbusIpMaster.CreateIp(ClientSocket);
                     ReceiveThread = new Thread(new ThreadStart(ReceiveData));
                     ReceiveThread.Start();
                 }
@@ -10284,8 +10298,9 @@ namespace Monitor
 
                 ClientLoggerRX.LogMessage(Color.Blue, Color.Azure, "", New_Line = false, Show_Time = true);
                 ClientLoggerRX.LogMessage(Color.Blue, Color.Azure, "Rx:>", false, false);
+
                 ClientLoggerRX.LogMessage(Color.Blue, Color.Azure, ConvertByteArraytToString(data), true, false);
-                Modbus_DataReceived(data);
+                SendMessageToSystemLogger(ConvertByteArraytToString(data));
 
             }
         }
@@ -10336,65 +10351,70 @@ namespace Monitor
             {
                 //Execute the command
                 PrintToSystemLogerTxMessage(i_Command);
-                richTextBox_ClientTx.Text = ConvertByteArraytToString(bytes);
+                string command = ConvertByteArraytToString(bytes);
+                richTextBox_ClientTx.Text = command;
                 Button3_Click_4Async(null, null);
             }
             
             return ret;
         }
 
+        /*
+         private void Modbus_DataReceived(byte[] Data)
+         {
+             // Read the Modbus TCP response from the server
+            // byte[] response = new byte[1024];
+            // Array.Copy(Data, response, Data.Length);
 
-        private void Modbus_DataReceived(byte[] Data)
-        {
-            // Read the Modbus TCP response from the server
-            byte[] response = new byte[1024];
-            Array.Copy(Data, response, Data.Length);
+             // Extract the data from the Modbus TCP response
+             //int byteCount = response[8];
+             //byte[] data = new byte[byteCount];
+             //Array.Copy(response, 9, data, 0, byteCount);
 
-            // Extract the data from the Modbus TCP response
-            //int byteCount = response[8];
-            //byte[] data = new byte[byteCount];
-            //Array.Copy(response, 9, data, 0, byteCount);
+             /************ sholud add here switch case by opertion for knowing if ti print Read register , Write register etc..... *******************/
 
-            /************ sholud add here switch case by opertion for knowing if ti print Read register , Write register etc..... *******************/
- 
-            string RxMessageToClientLogger = "Read register : { " + ConvertByteArraytToString(Data) + "}"; 
+        //string RxMessageToClientLogger = "Read register : { " + ConvertByteArraytToString(Data) + "}"; 
 
 
-            SendMessageToSystemLogger(RxMessageToClientLogger);
-        }
+        //   SendMessageToSystemLogger(RxMessageToClientLogger);
+        //   }
 
 
         private async void Button3_Click_4Async(object sender, EventArgs e)
         {
             try
             {
-                // Create a TCP connection to the Modbus slave device
-                ModbusIpMaster modbusClient = ModbusIpMaster.CreateIp(ClientSocket);
 
                 // Read the command from the text box
                 string command = richTextBox_ClientTx.Text.Trim();
+
+                // Log the command being sent
+                Debug.WriteLine($"Sending command: {command}");
 
                 // Parse the command into a byte array
                 byte[] data = ConvertHexStringToByteArray(command);
 
                 // Send the Modbus request to the server
-                ushort startAddress=0;
+                ushort startAddress;
                 ushort numberOfRegisters;
+                byte slaveAddress;
                 ushort[] holdingRegisters;
                 bool[] coilValues;
                 ushort[] registerValues;
+
+                slaveAddress = data[6];
+                startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
 
                 byte functionCode = data[7];
                 switch (functionCode)
                 {
                     case 0x03: // Read Holding Registers
-                       //startAddress = BitConverter.ToUInt16(data, 8);
-                       //numberOfRegisters = BitConverter.ToUInt16(data, 10);
-                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
-                      
-                        numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
-                        holdingRegisters = await modbusClient.ReadHoldingRegistersAsync(startAddress, numberOfRegisters);
 
+                        holdingRegisters = await modbusClient.ReadHoldingRegistersAsync(slaveAddress, startAddress, numberOfRegisters);
+
+                        // Log the data received
+                        Debug.WriteLine($"Received data: {string.Join(", ", holdingRegisters)}");
                         break;
 
                     case 0x05: // Write Single Coil
@@ -10404,25 +10424,23 @@ namespace Monitor
                         break;
 
                     case 0x06: // Write Single Register
-                        startAddress = BitConverter.ToUInt16(data, 0);
-                        ushort registerValue = (ushort)BitConverter.ToInt16(data, 2);
-                        await modbusClient.WriteSingleRegisterAsync(startAddress, registerValue);
+                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                        ushort registerValue = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
+                        await modbusClient.WriteSingleRegisterAsync(slaveAddress, startAddress, registerValue);
                         break;
 
                     case 0x04: // Read Input Registers
 
-
-                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);         
+                        startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
                         numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
-                       // startAddress = BitConverter.ToUInt16(data, 0);
-                       // numberOfRegisters = BitConverter.ToUInt16(data, 2);
-                        holdingRegisters = await modbusClient.ReadInputRegistersAsync(startAddress, numberOfRegisters);
-                        //Modbus_DataReceived(response);
+                        holdingRegisters = await modbusClient.ReadInputRegistersAsync(slaveAddress, startAddress, numberOfRegisters);
+
+                        // Log the data received
+                        Debug.WriteLine($"Received data: {string.Join(", ", holdingRegisters)}");
                         break;
 
                     case 0x0F: // Write Multiple Coils
-                        // startAddress = BitConverter.ToUInt16(data, 0);
-                        // numberOfRegisters = BitConverter.ToUInt16(data, 2);
+
                         startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
                         numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
 
@@ -10431,13 +10449,12 @@ namespace Monitor
                         {
                             coilValues[i] = BitConverter.ToBoolean(data, 4 + i);
                         }
-                        await modbusClient.WriteMultipleCoilsAsync(startAddress, coilValues);
+                        await modbusClient.WriteMultipleCoilsAsync(slaveAddress, startAddress, coilValues);
                         break;
 
                     case 0x10: // Write Multiple Registers
 
-                        //startAddress = BitConverter.ToUInt16(data, 0);
-                        //numberOfRegisters = BitConverter.ToUInt16(data, 2);
+
 
                         startAddress = ushort.Parse(BitConverter.ToString(data, 8, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
                         numberOfRegisters = ushort.Parse(BitConverter.ToString(data, 10, 2).Replace("-", ""), System.Globalization.NumberStyles.HexNumber);
@@ -10447,7 +10464,7 @@ namespace Monitor
                         {
                             registerValues[i] = (ushort)BitConverter.ToInt16(data, 4 + i * 2);
                         }
-                        await modbusClient.WriteMultipleRegistersAsync(startAddress, registerValues);
+                        await modbusClient.WriteMultipleRegistersAsync(slaveAddress,startAddress, registerValues);
                         break;
 
                     default:
@@ -10455,7 +10472,7 @@ namespace Monitor
                         break;
                 }
 
-                modbusClient.Transport.Dispose();
+                modbusClient.Dispose();
             }
             catch (Exception ex)
             {
